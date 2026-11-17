@@ -1,0 +1,930 @@
+{
+  "metadata": {
+    "app": "ENGLISH SPEAKING AI",
+    "version": "1.0.0",
+    "language_pair": "en-vi",
+    "pronunciation_standard": "General American IPA",
+    "cefr_levels": [
+      "A1",
+      "A2",
+      "B1",
+      "B2",
+      "C1",
+      "C2"
+    ],
+    "dataset_scope": "Starter batch: 36 vocabulary items, 6 conversation scenarios, 6 speaking tasks",
+    "long_term_targets": {
+      "vocabulary_items": 1000,
+      "conversation_scenarios": 100,
+      "speaking_tasks": 100
+    }
+  },
+  "vocabulary": [
+    {
+      "id": "v_a1_001",
+      "level": "A1",
+      "topic": "Daily routines",
+      "word": "wake up",
+      "ipa": "/weɪk ʌp/",
+      "part_of_speech": "phrasal verb",
+      "meaning_vi": "thức dậy",
+      "example_en": "I wake up at six every morning.",
+      "example_vi": "Tôi thức dậy lúc sáu giờ mỗi sáng."
+    },
+    {
+      "id": "v_a1_002",
+      "level": "A1",
+      "topic": "Food and drink",
+      "word": "thirsty",
+      "ipa": "/ˈθɝːsti/",
+      "part_of_speech": "adjective",
+      "meaning_vi": "khát nước",
+      "example_en": "I'm thirsty. Can I have some water?",
+      "example_vi": "Tôi khát nước. Tôi có thể uống chút nước không?"
+    },
+    {
+      "id": "v_a1_003",
+      "level": "A1",
+      "topic": "Places in town",
+      "word": "library",
+      "ipa": "/ˈlaɪˌbreri/",
+      "part_of_speech": "noun",
+      "meaning_vi": "thư viện",
+      "example_en": "The library is next to the school.",
+      "example_vi": "Thư viện nằm cạnh trường học."
+    },
+    {
+      "id": "v_a1_004",
+      "level": "A1",
+      "topic": "Family",
+      "word": "cousin",
+      "ipa": "/ˈkʌzən/",
+      "part_of_speech": "noun",
+      "meaning_vi": "anh/chị/em họ; người em họ",
+      "example_en": "My cousin lives in Da Nang.",
+      "example_vi": "Anh họ của tôi sống ở Đà Nẵng."
+    },
+    {
+      "id": "v_a1_005",
+      "level": "A1",
+      "topic": "Shopping",
+      "word": "cheap",
+      "ipa": "/tʃiːp/",
+      "part_of_speech": "adjective",
+      "meaning_vi": "rẻ",
+      "example_en": "These apples are cheap today.",
+      "example_vi": "Hôm nay những quả táo này có giá rẻ."
+    },
+    {
+      "id": "v_a1_006",
+      "level": "A1",
+      "topic": "Weather",
+      "word": "cloudy",
+      "ipa": "/ˈklaʊdi/",
+      "part_of_speech": "adjective",
+      "meaning_vi": "nhiều mây",
+      "example_en": "It's cloudy, but it isn't raining.",
+      "example_vi": "Trời nhiều mây nhưng không mưa."
+    },
+    {
+      "id": "v_a2_001",
+      "level": "A2",
+      "topic": "Travel",
+      "word": "reservation",
+      "ipa": "/ˌrezɚˈveɪʃən/",
+      "part_of_speech": "noun",
+      "meaning_vi": "sự đặt chỗ; chỗ đã đặt",
+      "example_en": "I have a reservation for two at seven.",
+      "example_vi": "Tôi đã đặt chỗ cho hai người lúc bảy giờ."
+    },
+    {
+      "id": "v_a2_002",
+      "level": "A2",
+      "topic": "Health",
+      "word": "headache",
+      "ipa": "/ˈhedeɪk/",
+      "part_of_speech": "noun",
+      "meaning_vi": "cơn đau đầu",
+      "example_en": "I have a headache, so I'm going to rest.",
+      "example_vi": "Tôi bị đau đầu nên sẽ nghỉ ngơi."
+    },
+    {
+      "id": "v_a2_003",
+      "level": "A2",
+      "topic": "Transport",
+      "word": "platform",
+      "ipa": "/ˈplætˌfɔːrm/",
+      "part_of_speech": "noun",
+      "meaning_vi": "sân ga; ke ga",
+      "example_en": "The train leaves from platform three.",
+      "example_vi": "Tàu khởi hành từ sân ga số ba."
+    },
+    {
+      "id": "v_a2_004",
+      "level": "A2",
+      "topic": "Work and study",
+      "word": "improve",
+      "ipa": "/ɪmˈpruːv/",
+      "part_of_speech": "verb",
+      "meaning_vi": "cải thiện; tiến bộ",
+      "example_en": "I practise every day to improve my English.",
+      "example_vi": "Tôi luyện tập mỗi ngày để cải thiện tiếng Anh."
+    },
+    {
+      "id": "v_a2_005",
+      "level": "A2",
+      "topic": "Technology",
+      "word": "password",
+      "ipa": "/ˈpæsˌwɝːd/",
+      "part_of_speech": "noun",
+      "meaning_vi": "mật khẩu",
+      "example_en": "Please don't share your password with anyone.",
+      "example_vi": "Vui lòng đừng chia sẻ mật khẩu của bạn với bất kỳ ai."
+    },
+    {
+      "id": "v_a2_006",
+      "level": "A2",
+      "topic": "Feelings",
+      "word": "worried",
+      "ipa": "/ˈwɝːid/",
+      "part_of_speech": "adjective",
+      "meaning_vi": "lo lắng",
+      "example_en": "She is worried about tomorrow's exam.",
+      "example_vi": "Cô ấy lo lắng về bài kiểm tra ngày mai."
+    },
+    {
+      "id": "v_b1_001",
+      "level": "B1",
+      "topic": "Communication",
+      "word": "misunderstanding",
+      "ipa": "/ˌmɪsʌndɚˈstændɪŋ/",
+      "part_of_speech": "noun",
+      "meaning_vi": "sự hiểu lầm",
+      "example_en": "A quick phone call cleared up the misunderstanding.",
+      "example_vi": "Một cuộc gọi ngắn đã giải quyết sự hiểu lầm."
+    },
+    {
+      "id": "v_b1_002",
+      "level": "B1",
+      "topic": "Environment",
+      "word": "reusable",
+      "ipa": "/ˌriːˈjuːzəbəl/",
+      "part_of_speech": "adjective",
+      "meaning_vi": "có thể tái sử dụng",
+      "example_en": "I carry a reusable bottle to reduce plastic waste.",
+      "example_vi": "Tôi mang theo bình có thể tái sử dụng để giảm rác thải nhựa."
+    },
+    {
+      "id": "v_b1_003",
+      "level": "B1",
+      "topic": "Learning",
+      "word": "deadline",
+      "ipa": "/ˈdedˌlaɪn/",
+      "part_of_speech": "noun",
+      "meaning_vi": "hạn chót",
+      "example_en": "We need to finish the project before the deadline.",
+      "example_vi": "Chúng ta cần hoàn thành dự án trước hạn chót."
+    },
+    {
+      "id": "v_b1_004",
+      "level": "B1",
+      "topic": "Travel",
+      "word": "reliable",
+      "ipa": "/rɪˈlaɪəbəl/",
+      "part_of_speech": "adjective",
+      "meaning_vi": "đáng tin cậy",
+      "example_en": "The local bus service is usually reliable.",
+      "example_vi": "Dịch vụ xe buýt địa phương thường đáng tin cậy."
+    },
+    {
+      "id": "v_b1_005",
+      "level": "B1",
+      "topic": "Opinions",
+      "word": "benefit",
+      "ipa": "/ˈbenəfɪt/",
+      "part_of_speech": "noun",
+      "meaning_vi": "lợi ích",
+      "example_en": "One benefit of reading is that it builds vocabulary.",
+      "example_vi": "Một lợi ích của việc đọc là nó giúp mở rộng vốn từ."
+    },
+    {
+      "id": "v_b1_006",
+      "level": "B1",
+      "topic": "Work",
+      "word": "colleague",
+      "ipa": "/ˈkɑːliːɡ/",
+      "part_of_speech": "noun",
+      "meaning_vi": "đồng nghiệp",
+      "example_en": "I asked a colleague to review my presentation.",
+      "example_vi": "Tôi nhờ một đồng nghiệp xem lại bài thuyết trình."
+    },
+    {
+      "id": "v_b2_001",
+      "level": "B2",
+      "topic": "Critical thinking",
+      "word": "assumption",
+      "ipa": "/əˈsʌmpʃən/",
+      "part_of_speech": "noun",
+      "meaning_vi": "giả định; điều cho là đúng khi chưa kiểm chứng",
+      "example_en": "We should test that assumption before making a decision.",
+      "example_vi": "Chúng ta nên kiểm chứng giả định đó trước khi đưa ra quyết định."
+    },
+    {
+      "id": "v_b2_002",
+      "level": "B2",
+      "topic": "Society",
+      "word": "inequality",
+      "ipa": "/ˌɪnɪˈkwɑːləti/",
+      "part_of_speech": "noun",
+      "meaning_vi": "sự bất bình đẳng",
+      "example_en": "The report examines inequality in access to education.",
+      "example_vi": "Báo cáo xem xét sự bất bình đẳng trong cơ hội tiếp cận giáo dục."
+    },
+    {
+      "id": "v_b2_003",
+      "level": "B2",
+      "topic": "Workplace",
+      "word": "negotiate",
+      "ipa": "/nɪˈɡoʊʃiˌeɪt/",
+      "part_of_speech": "verb",
+      "meaning_vi": "đàm phán; thương lượng",
+      "example_en": "They negotiated a more flexible working schedule.",
+      "example_vi": "Họ đã thương lượng được lịch làm việc linh hoạt hơn."
+    },
+    {
+      "id": "v_b2_004",
+      "level": "B2",
+      "topic": "Media",
+      "word": "misleading",
+      "ipa": "/ˌmɪsˈliːdɪŋ/",
+      "part_of_speech": "adjective",
+      "meaning_vi": "gây hiểu lầm; dễ khiến người ta hiểu sai",
+      "example_en": "The headline is misleading because it leaves out important facts.",
+      "example_vi": "Tiêu đề gây hiểu lầm vì bỏ qua những sự thật quan trọng."
+    },
+    {
+      "id": "v_b2_005",
+      "level": "B2",
+      "topic": "Environment",
+      "word": "sustainable",
+      "ipa": "/səˈsteɪnəbəl/",
+      "part_of_speech": "adjective",
+      "meaning_vi": "bền vững",
+      "example_en": "Cities need sustainable ways to manage water.",
+      "example_vi": "Các thành phố cần những phương thức quản lý nước bền vững."
+    },
+    {
+      "id": "v_b2_006",
+      "level": "B2",
+      "topic": "Problem solving",
+      "word": "consequence",
+      "ipa": "/ˈkɑːnsəˌkwens/",
+      "part_of_speech": "noun",
+      "meaning_vi": "hệ quả; hậu quả",
+      "example_en": "Every choice has a consequence, even if it is not immediate.",
+      "example_vi": "Mỗi lựa chọn đều có hệ quả, dù hệ quả đó không xuất hiện ngay lập tức."
+    },
+    {
+      "id": "v_c1_001",
+      "level": "C1",
+      "topic": "Academic discussion",
+      "word": "nuanced",
+      "ipa": "/ˈnuːɑːnst/",
+      "part_of_speech": "adjective",
+      "meaning_vi": "có sắc thái tinh tế; không đơn giản một chiều",
+      "example_en": "The article offers a nuanced view of online education.",
+      "example_vi": "Bài báo đưa ra góc nhìn tinh tế, đa chiều về giáo dục trực tuyến."
+    },
+    {
+      "id": "v_c1_002",
+      "level": "C1",
+      "topic": "Research",
+      "word": "substantiate",
+      "ipa": "/səbˈstænʃiˌeɪt/",
+      "part_of_speech": "verb",
+      "meaning_vi": "chứng minh bằng bằng chứng",
+      "example_en": "Researchers need reliable data to substantiate their claims.",
+      "example_vi": "Các nhà nghiên cứu cần dữ liệu đáng tin cậy để chứng minh những nhận định của mình."
+    },
+    {
+      "id": "v_c1_003",
+      "level": "C1",
+      "topic": "Public policy",
+      "word": "feasible",
+      "ipa": "/ˈfiːzəbəl/",
+      "part_of_speech": "adjective",
+      "meaning_vi": "khả thi",
+      "example_en": "The committee is looking for a feasible long-term solution.",
+      "example_vi": "Ủy ban đang tìm kiếm một giải pháp dài hạn khả thi."
+    },
+    {
+      "id": "v_c1_004",
+      "level": "C1",
+      "topic": "Communication",
+      "word": "articulate",
+      "ipa": "/ɑːrˈtɪkjəˌleɪt/",
+      "part_of_speech": "verb",
+      "meaning_vi": "diễn đạt rõ ràng, mạch lạc",
+      "example_en": "She can articulate complex ideas in simple language.",
+      "example_vi": "Cô ấy có thể diễn đạt những ý tưởng phức tạp bằng ngôn ngữ đơn giản."
+    },
+    {
+      "id": "v_c1_005",
+      "level": "C1",
+      "topic": "Change",
+      "word": "underlying",
+      "ipa": "/ˌʌndɚˈlaɪɪŋ/",
+      "part_of_speech": "adjective",
+      "meaning_vi": "tiềm ẩn; nền tảng; nằm bên dưới",
+      "example_en": "We need to understand the underlying causes of the problem.",
+      "example_vi": "Chúng ta cần hiểu những nguyên nhân tiềm ẩn của vấn đề."
+    },
+    {
+      "id": "v_c1_006",
+      "level": "C1",
+      "topic": "Analysis",
+      "word": "discrepancy",
+      "ipa": "/dɪˈskrepənsi/",
+      "part_of_speech": "noun",
+      "meaning_vi": "sự khác biệt hoặc không nhất quán giữa các dữ liệu",
+      "example_en": "The team noticed a discrepancy between the two reports.",
+      "example_vi": "Nhóm nhận thấy sự không nhất quán giữa hai báo cáo."
+    },
+    {
+      "id": "v_c2_001",
+      "level": "C2",
+      "topic": "Abstract concepts",
+      "word": "epistemic",
+      "ipa": "/ˌepɪˈstemɪk/",
+      "part_of_speech": "adjective",
+      "meaning_vi": "thuộc về tri thức hoặc cách con người biết và xác lập điều gì đó",
+      "example_en": "The debate raises an epistemic question about what counts as evidence.",
+      "example_vi": "Cuộc tranh luận đặt ra một câu hỏi về tri thức: điều gì được xem là bằng chứng."
+    },
+    {
+      "id": "v_c2_002",
+      "level": "C2",
+      "topic": "Argumentation",
+      "word": "incongruous",
+      "ipa": "/ɪnˈkɑːŋɡruəs/",
+      "part_of_speech": "adjective",
+      "meaning_vi": "không phù hợp; không hài hòa với bối cảnh",
+      "example_en": "His casual response seemed incongruous with the seriousness of the meeting.",
+      "example_vi": "Câu trả lời xuề xòa của anh ấy có vẻ không phù hợp với tính nghiêm túc của cuộc họp."
+    },
+    {
+      "id": "v_c2_003",
+      "level": "C2",
+      "topic": "Literary language",
+      "word": "ostensibly",
+      "ipa": "/ɑːˈstensəbli/",
+      "part_of_speech": "adverb",
+      "meaning_vi": "bề ngoài có vẻ; theo như tuyên bố",
+      "example_en": "The policy was ostensibly designed to simplify the process.",
+      "example_vi": "Chính sách này bề ngoài được thiết kế nhằm đơn giản hóa quy trình."
+    },
+    {
+      "id": "v_c2_004",
+      "level": "C2",
+      "topic": "Evaluation",
+      "word": "tenuous",
+      "ipa": "/ˈtenjuəs/",
+      "part_of_speech": "adjective",
+      "meaning_vi": "mong manh; thiếu cơ sở vững chắc",
+      "example_en": "The conclusion rests on a tenuous link between the two events.",
+      "example_vi": "Kết luận dựa trên mối liên hệ thiếu vững chắc giữa hai sự kiện."
+    },
+    {
+      "id": "v_c2_005",
+      "level": "C2",
+      "topic": "Academic writing",
+      "word": "pervasive",
+      "ipa": "/pɚˈveɪsɪv/",
+      "part_of_speech": "adjective",
+      "meaning_vi": "lan rộng; hiện diện ở khắp nơi",
+      "example_en": "Digital technology has had a pervasive influence on communication.",
+      "example_vi": "Công nghệ số đã có ảnh hưởng sâu rộng đến hoạt động giao tiếp."
+    },
+    {
+      "id": "v_c2_006",
+      "level": "C2",
+      "topic": "Reasoning",
+      "word": "conundrum",
+      "ipa": "/kəˈnʌndrəm/",
+      "part_of_speech": "noun",
+      "meaning_vi": "vấn đề hóc búa; tình thế khó tìm lời giải",
+      "example_en": "Balancing privacy and public safety remains a difficult conundrum.",
+      "example_vi": "Cân bằng quyền riêng tư và an toàn công cộng vẫn là một vấn đề hóc búa."
+    }
+  ],
+  "conversation_scenarios": [
+    {
+      "id": "s_a1_001",
+      "level": "A1",
+      "topic": "Meeting someone for the first time",
+      "context_vi": "Hai người gặp nhau lần đầu trong một lớp học tiếng Anh.",
+      "roles": [
+        {
+          "role": "Alex",
+          "description_vi": "Học viên mới"
+        },
+        {
+          "role": "Mai",
+          "description_vi": "Bạn cùng lớp"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Alex",
+          "en": "Hi! I'm Alex. What's your name?",
+          "vi": "Chào bạn! Mình là Alex. Bạn tên gì?"
+        },
+        {
+          "speaker": "Mai",
+          "en": "I'm Mai. Nice to meet you.",
+          "vi": "Mình là Mai. Rất vui được gặp bạn."
+        },
+        {
+          "speaker": "Alex",
+          "en": "Nice to meet you, too. Are you from here?",
+          "vi": "Mình cũng rất vui được gặp bạn. Bạn ở đây à?"
+        },
+        {
+          "speaker": "Mai",
+          "en": "Yes, I am. How about you?",
+          "vi": "Đúng vậy. Còn bạn thì sao?"
+        },
+        {
+          "speaker": "Alex",
+          "en": "I'm from Australia. I'm here to study English.",
+          "vi": "Mình đến từ Úc. Mình ở đây để học tiếng Anh."
+        }
+      ],
+      "useful_phrases": [
+        {
+          "en": "Nice to meet you.",
+          "vi": "Rất vui được gặp bạn."
+        },
+        {
+          "en": "Where are you from?",
+          "vi": "Bạn đến từ đâu?"
+        },
+        {
+          "en": "How about you?",
+          "vi": "Còn bạn thì sao?"
+        }
+      ],
+      "ai_coaching_instruction_vi": "Đóng vai người bạn cùng lớp. Dùng câu ngắn, tốc độ chậm vừa phải; hỏi từng câu và chờ người học trả lời. Sửa tối đa một lỗi quan trọng sau mỗi lượt."
+    },
+    {
+      "id": "s_a2_001",
+      "level": "A2",
+      "topic": "Ordering food at a café",
+      "context_vi": "Khách gọi đồ uống và món ăn nhẹ tại quán cà phê.",
+      "roles": [
+        {
+          "role": "Customer",
+          "description_vi": "Khách hàng"
+        },
+        {
+          "role": "Server",
+          "description_vi": "Nhân viên phục vụ"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Server",
+          "en": "Good afternoon. What would you like?",
+          "vi": "Chào buổi chiều. Quý khách muốn dùng gì?"
+        },
+        {
+          "speaker": "Customer",
+          "en": "I'd like a chicken sandwich and an iced tea, please.",
+          "vi": "Cho tôi một bánh mì kẹp gà và một trà đá."
+        },
+        {
+          "speaker": "Server",
+          "en": "Would you like anything else?",
+          "vi": "Quý khách có muốn dùng thêm gì không?"
+        },
+        {
+          "speaker": "Customer",
+          "en": "No, thank you. How much is it?",
+          "vi": "Không, cảm ơn. Hết bao nhiêu tiền?"
+        },
+        {
+          "speaker": "Server",
+          "en": "It's eight dollars altogether.",
+          "vi": "Tổng cộng là tám đô la."
+        }
+      ],
+      "useful_phrases": [
+        {
+          "en": "I'd like ..., please.",
+          "vi": "Cho tôi ..., vui lòng."
+        },
+        {
+          "en": "Would you like anything else?",
+          "vi": "Bạn có muốn dùng thêm gì không?"
+        },
+        {
+          "en": "How much is it altogether?",
+          "vi": "Tổng cộng hết bao nhiêu?"
+        }
+      ],
+      "ai_coaching_instruction_vi": "Đóng vai nhân viên phục vụ. Cho người học tự gọi món, hỏi lại khi cần làm rõ lựa chọn. Sau hội thoại, góp ý cách dùng I'd like và please."
+    },
+    {
+      "id": "s_b1_001",
+      "level": "B1",
+      "topic": "Making and changing plans",
+      "context_vi": "Hai người bạn sắp xếp lịch cuối tuần; một người cần đổi thời gian.",
+      "roles": [
+        {
+          "role": "Linh",
+          "description_vi": "Muốn lên kế hoạch đi xem phim"
+        },
+        {
+          "role": "Sam",
+          "description_vi": "Bận vào buổi chiều"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Linh",
+          "en": "Are you free to see a film on Saturday afternoon?",
+          "vi": "Chiều thứ Bảy bạn có rảnh đi xem phim không?"
+        },
+        {
+          "speaker": "Sam",
+          "en": "I'd love to, but I have to help my parents then.",
+          "vi": "Mình rất muốn, nhưng lúc đó mình phải giúp bố mẹ."
+        },
+        {
+          "speaker": "Linh",
+          "en": "No problem. Would Saturday evening work instead?",
+          "vi": "Không sao. Vậy tối thứ Bảy có được không?"
+        },
+        {
+          "speaker": "Sam",
+          "en": "That should work. What time shall we meet?",
+          "vi": "Chắc được đấy. Chúng ta gặp nhau lúc mấy giờ?"
+        },
+        {
+          "speaker": "Linh",
+          "en": "How about seven outside the cinema?",
+          "vi": "Bảy giờ ở trước rạp chiếu phim nhé?"
+        },
+        {
+          "speaker": "Sam",
+          "en": "Perfect. I'll see you there.",
+          "vi": "Tuyệt. Hẹn gặp bạn ở đó."
+        }
+      ],
+      "useful_phrases": [
+        {
+          "en": "Would ... work for you?",
+          "vi": "... có phù hợp với bạn không?"
+        },
+        {
+          "en": "I'd love to, but ...",
+          "vi": "Mình rất muốn, nhưng ..."
+        },
+        {
+          "en": "How about ... instead?",
+          "vi": "Thay vào đó ... thì sao?"
+        }
+      ],
+      "ai_coaching_instruction_vi": "Đóng vai Sam. Khuyến khích người học đề xuất ít nhất hai phương án thời gian và phản hồi lịch sự khi kế hoạch thay đổi."
+    },
+    {
+      "id": "s_b2_001",
+      "level": "B2",
+      "topic": "Disagreeing politely in a meeting",
+      "context_vi": "Nhóm dự án thảo luận về việc chuyển một phần hoạt động học tập sang trực tuyến.",
+      "roles": [
+        {
+          "role": "Jordan",
+          "description_vi": "Ủng hộ triển khai ngay"
+        },
+        {
+          "role": "Taylor",
+          "description_vi": "Muốn đánh giá rủi ro trước"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Jordan",
+          "en": "I think we should move all weekly sessions online next month. It would save time.",
+          "vi": "Tôi nghĩ chúng ta nên chuyển toàn bộ buổi học hằng tuần sang trực tuyến vào tháng tới. Việc đó sẽ tiết kiệm thời gian."
+        },
+        {
+          "speaker": "Taylor",
+          "en": "I see the appeal, but I'm not entirely convinced that a full transition is the best option.",
+          "vi": "Tôi hiểu sức hấp dẫn của phương án đó, nhưng chưa hoàn toàn tin rằng chuyển đổi toàn bộ là lựa chọn tốt nhất."
+        },
+        {
+          "speaker": "Jordan",
+          "en": "What concerns you most?",
+          "vi": "Điều gì khiến bạn lo ngại nhất?"
+        },
+        {
+          "speaker": "Taylor",
+          "en": "Some participants may have unreliable internet access. Could we run a short pilot first?",
+          "vi": "Một số người tham gia có thể không có kết nối Internet ổn định. Chúng ta có thể thử nghiệm trong thời gian ngắn trước không?"
+        },
+        {
+          "speaker": "Jordan",
+          "en": "That's a fair point. Let's test it with one group and review the feedback.",
+          "vi": "Ý kiến đó hợp lý. Hãy thử với một nhóm rồi xem xét phản hồi."
+        }
+      ],
+      "useful_phrases": [
+        {
+          "en": "I see the appeal, but ...",
+          "vi": "Tôi hiểu điểm hấp dẫn của phương án đó, nhưng ..."
+        },
+        {
+          "en": "I'm not entirely convinced that ...",
+          "vi": "Tôi chưa hoàn toàn tin rằng ..."
+        },
+        {
+          "en": "That's a fair point.",
+          "vi": "Đó là một ý kiến xác đáng."
+        }
+      ],
+      "ai_coaching_instruction_vi": "Đóng vai Jordan trong một cuộc họp chuyên nghiệp. Yêu cầu người học nêu quan điểm, đưa ra ít nhất một lý do và phản hồi một ý kiến trái chiều bằng ngôn ngữ lịch sự."
+    },
+    {
+      "id": "s_c1_001",
+      "level": "C1",
+      "topic": "Presenting a research recommendation",
+      "context_vi": "Một chuyên viên trình bày khuyến nghị dựa trên kết quả khảo sát cho ban điều hành.",
+      "roles": [
+        {
+          "role": "Presenter",
+          "description_vi": "Người trình bày"
+        },
+        {
+          "role": "Director",
+          "description_vi": "Người đặt câu hỏi phản biện"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Presenter",
+          "en": "The findings suggest that flexible scheduling may improve staff retention, although the effect varies across departments.",
+          "vi": "Các kết quả cho thấy lịch làm việc linh hoạt có thể cải thiện khả năng giữ chân nhân viên, mặc dù tác động khác nhau giữa các phòng ban."
+        },
+        {
+          "speaker": "Director",
+          "en": "How confident are you that the pattern is not simply the result of differences in team size?",
+          "vi": "Mức độ chắc chắn của anh/chị đến đâu rằng xu hướng này không đơn thuần xuất phát từ sự khác biệt về quy mô nhóm?"
+        },
+        {
+          "speaker": "Presenter",
+          "en": "We controlled for team size, but I would caution against treating the association as proof of causation.",
+          "vi": "Chúng tôi đã kiểm soát yếu tố quy mô nhóm, nhưng tôi muốn lưu ý rằng không nên xem mối liên hệ này là bằng chứng về quan hệ nhân quả."
+        },
+        {
+          "speaker": "Director",
+          "en": "What would you recommend as the next step?",
+          "vi": "Anh/chị đề xuất bước tiếp theo là gì?"
+        },
+        {
+          "speaker": "Presenter",
+          "en": "A six-month pilot across two departments would allow us to assess the impact more robustly.",
+          "vi": "Một chương trình thí điểm sáu tháng tại hai phòng ban sẽ giúp chúng ta đánh giá tác động một cách vững chắc hơn."
+        }
+      ],
+      "useful_phrases": [
+        {
+          "en": "The findings suggest that ...",
+          "vi": "Các kết quả cho thấy rằng ..."
+        },
+        {
+          "en": "I would caution against treating ... as ...",
+          "vi": "Tôi muốn lưu ý không nên xem ... là ..."
+        },
+        {
+          "en": "A pilot would allow us to assess ...",
+          "vi": "Một chương trình thí điểm sẽ cho phép chúng ta đánh giá ..."
+        }
+      ],
+      "ai_coaching_instruction_vi": "Đóng vai giám đốc. Đặt câu hỏi đào sâu về bằng chứng, giới hạn nghiên cứu và tính khả thi. Đánh giá khả năng diễn đạt chính xác, có sắc thái và có lập luận."
+    },
+    {
+      "id": "s_c2_001",
+      "level": "C2",
+      "topic": "Challenging an argument in a public forum",
+      "context_vi": "Hai diễn giả trao đổi về một đề xuất chính sách; người học cần phản biện tinh tế, phân biệt bằng chứng và giả định.",
+      "roles": [
+        {
+          "role": "Panelist A",
+          "description_vi": "Người bảo vệ đề xuất"
+        },
+        {
+          "role": "Panelist B",
+          "description_vi": "Người phản biện"
+        }
+      ],
+      "dialogue": [
+        {
+          "speaker": "Panelist A",
+          "en": "The proposal is plainly the most efficient response, given the scale of the problem.",
+          "vi": "Xét quy mô của vấn đề, đề xuất này rõ ràng là phản ứng hiệu quả nhất."
+        },
+        {
+          "speaker": "Panelist B",
+          "en": "That conclusion may be premature. Efficiency depends on which outcomes we prioritise and over what time horizon.",
+          "vi": "Kết luận đó có thể còn quá sớm. Hiệu quả phụ thuộc vào kết quả nào được ưu tiên và trong khoảng thời gian nào."
+        },
+        {
+          "speaker": "Panelist A",
+          "en": "But the available figures point in the same direction.",
+          "vi": "Nhưng các số liệu hiện có đều chỉ về cùng một hướng."
+        },
+        {
+          "speaker": "Panelist B",
+          "en": "They do, though their interpretation rests on assumptions that have not yet been adequately tested. We should distinguish consistency of evidence from sufficiency of evidence.",
+          "vi": "Đúng vậy, dù cách diễn giải chúng dựa trên những giả định chưa được kiểm chứng đầy đủ. Chúng ta nên phân biệt tính nhất quán của bằng chứng với mức độ đầy đủ của bằng chứng."
+        },
+        {
+          "speaker": "Panelist A",
+          "en": "So what would make the case more convincing?",
+          "vi": "Vậy điều gì sẽ khiến lập luận thuyết phục hơn?"
+        },
+        {
+          "speaker": "Panelist B",
+          "en": "A transparent comparison with credible alternatives, including their long-term costs and unintended consequences, would strengthen it considerably.",
+          "vi": "Một phép so sánh minh bạch với các phương án thay thế đáng tin cậy, bao gồm chi phí dài hạn và hệ quả ngoài dự kiến, sẽ củng cố lập luận đáng kể."
+        }
+      ],
+      "useful_phrases": [
+        {
+          "en": "That conclusion may be premature.",
+          "vi": "Kết luận đó có thể còn quá sớm."
+        },
+        {
+          "en": "We should distinguish X from Y.",
+          "vi": "Chúng ta nên phân biệt X với Y."
+        },
+        {
+          "en": "A transparent comparison with ... would strengthen the case.",
+          "vi": "Một phép so sánh minh bạch với ... sẽ củng cố lập luận."
+        }
+      ],
+      "ai_coaching_instruction_vi": "Đóng vai diễn giả bảo vệ đề xuất. Yêu cầu người học phản biện bằng lập luận chặt chẽ, xác định giả định ẩn và đề xuất loại bằng chứng cần có. Tránh đánh giá chỉ dựa trên việc dùng từ khó."
+    }
+  ],
+  "speaking_tasks": [
+    {
+      "id": "sp_a1_001",
+      "level": "A1",
+      "topic": "Introduce yourself",
+      "prompt_en": "Introduce yourself to a new classmate.",
+      "prompt_vi": "Hãy giới thiệu bản thân với một bạn học mới.",
+      "instructions_vi": [
+        "Nói khoảng 30–45 giây.",
+        "Nêu tên, nơi ở, công việc hoặc việc học và một sở thích.",
+        "Dùng câu đơn ngắn, rõ ràng."
+      ],
+      "guiding_questions": [
+        "What's your name?",
+        "Where are you from?",
+        "What do you do?",
+        "What do you like doing?"
+      ],
+      "self_assessment": [
+        "Tôi đã nói được ít nhất bốn thông tin về bản thân.",
+        "Tôi dùng được câu đơn hoàn chỉnh.",
+        "Người nghe có thể hiểu các từ tôi nói.",
+        "Tôi nói đủ chậm và rõ."
+      ]
+    },
+    {
+      "id": "sp_a2_001",
+      "level": "A2",
+      "topic": "Describe a typical day",
+      "prompt_en": "Describe a typical weekday in your life.",
+      "prompt_vi": "Hãy mô tả một ngày trong tuần thường lệ của bạn.",
+      "instructions_vi": [
+        "Nói khoảng 1 phút.",
+        "Kể các hoạt động theo trình tự thời gian.",
+        "Dùng trạng từ chỉ tần suất và từ nối đơn giản như first, then, after that."
+      ],
+      "guiding_questions": [
+        "What time do you get up?",
+        "What do you do in the morning?",
+        "What is the busiest part of your day?",
+        "What do you do in the evening?"
+      ],
+      "self_assessment": [
+        "Tôi trình bày được các hoạt động theo trình tự.",
+        "Tôi dùng đúng thì hiện tại đơn cho thói quen.",
+        "Tôi có dùng từ chỉ thời gian hoặc tần suất.",
+        "Tôi hạn chế ngập ngừng quá lâu."
+      ]
+    },
+    {
+      "id": "sp_b1_001",
+      "level": "B1",
+      "topic": "A useful skill",
+      "prompt_en": "Talk about a skill you would like to improve and explain how you plan to do it.",
+      "prompt_vi": "Hãy nói về một kỹ năng bạn muốn cải thiện và giải thích kế hoạch thực hiện.",
+      "instructions_vi": [
+        "Nói khoảng 1–2 phút.",
+        "Giải thích vì sao kỹ năng đó quan trọng với bạn.",
+        "Nêu ít nhất hai hành động cụ thể và một khó khăn có thể gặp."
+      ],
+      "guiding_questions": [
+        "What skill do you want to improve?",
+        "Why is it important to you?",
+        "What steps will you take?",
+        "What might make your plan difficult?"
+      ],
+      "self_assessment": [
+        "Tôi nêu rõ mục tiêu và lý do.",
+        "Tôi đưa ra các bước cụ thể.",
+        "Tôi dùng được từ nối để liên kết ý.",
+        "Tôi có ví dụ hoặc trải nghiệm minh họa."
+      ]
+    },
+    {
+      "id": "sp_b2_001",
+      "level": "B2",
+      "topic": "Technology in education",
+      "prompt_en": "Do the benefits of using AI tools in education outweigh the risks?",
+      "prompt_vi": "Lợi ích của việc sử dụng công cụ AI trong giáo dục có lớn hơn những rủi ro hay không?",
+      "instructions_vi": [
+        "Nói khoảng 2 phút.",
+        "Nêu quan điểm rõ ràng ngay từ đầu.",
+        "Phân tích ít nhất hai lợi ích và một rủi ro.",
+        "Đưa ra kết luận có điều kiện hoặc đề xuất giải pháp."
+      ],
+      "guiding_questions": [
+        "How can AI support teaching and learning?",
+        "What risks should schools consider?",
+        "Who should be responsible for checking AI-generated information?",
+        "What guidelines would you recommend?"
+      ],
+      "self_assessment": [
+        "Tôi có luận điểm rõ và nhất quán.",
+        "Tôi cân nhắc cả lợi ích lẫn rủi ro.",
+        "Tôi giải thích được nguyên nhân và hệ quả.",
+        "Tôi dùng từ vựng và cấu trúc đa dạng phù hợp."
+      ]
+    },
+    {
+      "id": "sp_c1_001",
+      "level": "C1",
+      "topic": "Balancing economic growth and environmental protection",
+      "prompt_en": "How should governments balance economic development with environmental protection?",
+      "prompt_vi": "Chính phủ nên cân bằng phát triển kinh tế với bảo vệ môi trường như thế nào?",
+      "instructions_vi": [
+        "Nói khoảng 3 phút.",
+        "Xác định các bên liên quan và những lợi ích có thể xung đột.",
+        "Phân tích đánh đổi ngắn hạn và dài hạn.",
+        "Đề xuất chính sách và thừa nhận giới hạn của giải pháp."
+      ],
+      "guiding_questions": [
+        "Which sectors face the greatest transition challenges?",
+        "How can policy protect vulnerable communities?",
+        "What evidence should guide decision-making?",
+        "How would you measure long-term success?"
+      ],
+      "self_assessment": [
+        "Tôi phân tích vấn đề từ nhiều góc độ.",
+        "Tôi phân biệt dữ kiện, giả định và ý kiến.",
+        "Tôi sử dụng cách diễn đạt chính xác, có sắc thái.",
+        "Tôi tổ chức lập luận mạch lạc và có kết luận thuyết phục."
+      ]
+    },
+    {
+      "id": "sp_c2_001",
+      "level": "C2",
+      "topic": "The limits of expertise",
+      "prompt_en": "When should society defer to expert judgement, and when should expert authority be challenged?",
+      "prompt_vi": "Khi nào xã hội nên dựa vào nhận định của chuyên gia, và khi nào cần chất vấn thẩm quyền chuyên môn?",
+      "instructions_vi": [
+        "Nói khoảng 3–4 phút.",
+        "Định nghĩa rõ các khái niệm then chốt.",
+        "Xây dựng lập luận hai chiều, dùng ví dụ cụ thể.",
+        "Xem xét xung đột giữa chuyên môn, minh bạch và trách nhiệm giải trình.",
+        "Kết thúc bằng một nguyên tắc cân bằng."
+      ],
+      "guiding_questions": [
+        "What makes expertise trustworthy?",
+        "How should uncertainty be communicated?",
+        "Can public participation improve expert decisions?",
+        "What safeguards prevent authority from becoming unquestionable?"
+      ],
+      "self_assessment": [
+        "Tôi xử lý được các khái niệm trừu tượng chính xác.",
+        "Tôi nhận diện và xem xét phản biện mạnh.",
+        "Tôi phân biệt được chuyên môn với quyền lực thể chế.",
+        "Tôi duy trì lập luận tinh tế, mạch lạc và có chiều sâu."
+      ]
+    }
+  ]
+}

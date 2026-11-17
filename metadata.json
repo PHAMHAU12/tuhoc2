@@ -1,0 +1,6 @@
+{
+  "name": "TỰ HỌC TIẾNG ANH - PHẠM HẬU",
+  "description": "Nền tảng Tự học Tiếng Anh - Phạm Hậu giúp người Việt cải thiện kỹ năng nói, nghe, phát âm, từ vựng và ngữ pháp từ CEFR A1 đến C2.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

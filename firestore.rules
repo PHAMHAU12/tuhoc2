@@ -1,0 +1,433 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global safety net: deny all access by default
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
+        (request.auth.token.email == 'haupham101981@gmail.com' && request.auth.token.email_verified == true)
+      );
+    }
+
+    function isValidCefr(level) {
+      return level in ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+    }
+
+    function parentUserExists(userId) {
+      return exists(/databases/$(database)/documents/users/$(userId));
+    }
+
+    function isValidSkillScores(scores) {
+      return scores is map
+        && scores.keys().hasAll(['Speaking', 'Listening', 'Pronunciation', 'Vocabulary', 'Grammar'])
+        && scores.keys().hasOnly(['Speaking', 'Listening', 'Pronunciation', 'Vocabulary', 'Grammar'])
+        && scores.Speaking is int && scores.Speaking >= 0 && scores.Speaking <= 100
+        && scores.Listening is int && scores.Listening >= 0 && scores.Listening <= 100
+        && scores.Pronunciation is int && scores.Pronunciation >= 0 && scores.Pronunciation <= 100
+        && scores.Vocabulary is int && scores.Vocabulary >= 0 && scores.Vocabulary <= 100
+        && scores.Grammar is int && scores.Grammar >= 0 && scores.Grammar <= 100;
+    }
+
+    function isValidWeeklyMinutes(weekly) {
+      return weekly is map
+        && weekly.keys().hasAll(['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'])
+        && weekly.keys().hasOnly(['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'])
+        && weekly.T2 is int && weekly.T2 >= 0 && weekly.T2 <= 1440
+        && weekly.T3 is int && weekly.T3 >= 0 && weekly.T3 <= 1440
+        && weekly.T4 is int && weekly.T4 >= 0 && weekly.T4 <= 1440
+        && weekly.T5 is int && weekly.T5 >= 0 && weekly.T5 <= 1440
+        && weekly.T6 is int && weekly.T6 >= 0 && weekly.T6 <= 1440
+        && weekly.T7 is int && weekly.T7 >= 0 && weekly.T7 <= 1440
+        && weekly.CN is int && weekly.CN >= 0 && weekly.CN <= 1440;
+    }
+
+    function isValidCatalogVocabulary(data, vocabId) {
+      return data.keys().hasAll([
+          'id', 'level', 'topic', 'word', 'ipa', 'part_of_speech',
+          'meaning_vi', 'example_en', 'example_vi'
+        ])
+        && data.keys().hasOnly([
+          'id', 'level', 'topic', 'word', 'ipa', 'part_of_speech',
+          'meaning_vi', 'example_en', 'example_vi'
+        ])
+        && data.id is string && data.id == vocabId && isValidId(data.id) && data.id.size() <= 64
+        && isValidCefr(data.level)
+        && data.topic is string && data.topic.size() >= 1 && data.topic.size() <= 120
+        && data.word is string && data.word.size() >= 1 && data.word.size() <= 120
+        && data.ipa is string && data.ipa.size() >= 1 && data.ipa.size() <= 120
+        && data.part_of_speech is string && data.part_of_speech.size() >= 1 && data.part_of_speech.size() <= 60
+        && data.meaning_vi is string && data.meaning_vi.size() >= 1 && data.meaning_vi.size() <= 300
+        && data.example_en is string && data.example_en.size() >= 1 && data.example_en.size() <= 500
+        && data.example_vi is string && data.example_vi.size() >= 1 && data.example_vi.size() <= 500;
+    }
+
+    function isValidCatalogScenario(data, scenarioId) {
+      return data.keys().hasAll([
+          'id', 'level', 'topic', 'context_vi', 'roles', 'dialogue',
+          'useful_phrases', 'ai_coaching_instruction_vi'
+        ])
+        && data.keys().hasOnly([
+          'id', 'level', 'topic', 'context_vi', 'roles', 'dialogue',
+          'useful_phrases', 'ai_coaching_instruction_vi'
+        ])
+        && data.id is string && data.id == scenarioId && isValidId(data.id) && data.id.size() <= 64
+        && isValidCefr(data.level)
+        && data.topic is string && data.topic.size() >= 1 && data.topic.size() <= 200
+        && data.context_vi is string && data.context_vi.size() >= 1 && data.context_vi.size() <= 1000
+        && data.roles is list && data.roles.size() >= 1 && data.roles.size() <= 10 && data.roles[0] is map
+        && data.dialogue is list && data.dialogue.size() >= 1 && data.dialogue.size() <= 30 && data.dialogue[0] is map
+        && data.useful_phrases is list && data.useful_phrases.size() >= 1 && data.useful_phrases.size() <= 20 && data.useful_phrases[0] is map
+        && data.ai_coaching_instruction_vi is string
+        && data.ai_coaching_instruction_vi.size() >= 1 && data.ai_coaching_instruction_vi.size() <= 2000;
+    }
+
+    function isValidCatalogSpeakingTask(data, taskId) {
+      return data.keys().hasAll([
+          'id', 'level', 'topic', 'prompt_en', 'prompt_vi',
+          'instructions_vi', 'guiding_questions', 'self_assessment'
+        ])
+        && data.keys().hasOnly([
+          'id', 'level', 'topic', 'prompt_en', 'prompt_vi',
+          'instructions_vi', 'guiding_questions', 'self_assessment'
+        ])
+        && data.id is string && data.id == taskId && isValidId(data.id) && data.id.size() <= 64
+        && isValidCefr(data.level)
+        && data.topic is string && data.topic.size() >= 1 && data.topic.size() <= 200
+        && data.prompt_en is string && data.prompt_en.size() >= 1 && data.prompt_en.size() <= 1000
+        && data.prompt_vi is string && data.prompt_vi.size() >= 1 && data.prompt_vi.size() <= 1000
+        && data.instructions_vi is list && data.instructions_vi.size() >= 1 && data.instructions_vi.size() <= 15 && data.instructions_vi[0] is string
+        && data.guiding_questions is list && data.guiding_questions.size() >= 1 && data.guiding_questions.size() <= 15 && data.guiding_questions[0] is string
+        && data.self_assessment is list && data.self_assessment.size() >= 1 && data.self_assessment.size() <= 15 && data.self_assessment[0] is string;
+    }
+
+    function isValidUserProfile(data, userId) {
+      return data.keys().hasAll([
+          'uid', 'fullName', 'email', 'avatarUrl', 'currentCefr', 'targetCefr',
+          'dailyGoalMinutes', 'todayMinutes', 'streakDays', 'vocabularyLearnedCount',
+          'preferredAccent', 'speechRate', 'showVietnameseHints', 'showIpaNotation',
+          'skillScores', 'weeklyMinutes', 'createdAt', 'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'uid', 'fullName', 'email', 'avatarUrl', 'currentCefr', 'targetCefr',
+          'dailyGoalMinutes', 'todayMinutes', 'streakDays', 'vocabularyLearnedCount',
+          'preferredAccent', 'speechRate', 'showVietnameseHints', 'showIpaNotation',
+          'skillScores', 'weeklyMinutes', 'createdAt', 'updatedAt'
+        ])
+        && data.uid is string && data.uid == userId && data.uid == request.auth.uid
+        && data.fullName is string && data.fullName.size() >= 1 && data.fullName.size() <= 100
+        && data.email is string && data.email.size() >= 3 && data.email.size() <= 160
+        && data.avatarUrl is string && data.avatarUrl.size() <= 500
+        && isValidCefr(data.currentCefr)
+        && isValidCefr(data.targetCefr)
+        && data.dailyGoalMinutes is int && data.dailyGoalMinutes >= 5 && data.dailyGoalMinutes <= 180
+        && data.todayMinutes is int && data.todayMinutes >= 0 && data.todayMinutes <= 1440
+        && data.streakDays is int && data.streakDays >= 0 && data.streakDays <= 3650
+        && data.vocabularyLearnedCount is int && data.vocabularyLearnedCount >= 0 && data.vocabularyLearnedCount <= 50000
+        && data.preferredAccent in ['US', 'UK']
+        && data.speechRate is number && data.speechRate >= 0.5 && data.speechRate <= 2.0
+        && data.showVietnameseHints is bool
+        && data.showIpaNotation is bool
+        && isValidSkillScores(data.skillScores)
+        && isValidWeeklyMinutes(data.weeklyMinutes)
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidVocabularyBookmark(data, userId, wordId) {
+      return data.keys().hasAll(['uid', 'wordId', 'word', 'cefr', 'mastered', 'bookmarked', 'updatedAt'])
+        && data.keys().hasOnly(['uid', 'wordId', 'word', 'cefr', 'mastered', 'bookmarked', 'updatedAt'])
+        && data.uid is string && data.uid == userId && data.uid == request.auth.uid
+        && data.wordId is string && data.wordId == wordId && data.wordId.size() <= 64
+        && data.word is string && data.word.size() >= 1 && data.word.size() <= 120
+        && isValidCefr(data.cefr)
+        && data.mastered is bool
+        && data.bookmarked is bool
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidCompletedSpeakingTask(data, userId, taskId) {
+      return data.keys().hasAll([
+          'uid', 'taskId', 'topic', 'level', 'promptEn',
+          'checkedCriteria', 'completed', 'notes', 'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'uid', 'taskId', 'topic', 'level', 'promptEn',
+          'checkedCriteria', 'completed', 'notes', 'updatedAt'
+        ])
+        && data.uid is string && data.uid == userId && data.uid == request.auth.uid
+        && data.taskId is string && data.taskId == taskId && data.taskId.size() <= 64
+        && data.topic is string && data.topic.size() >= 1 && data.topic.size() <= 200
+        && isValidCefr(data.level)
+        && data.promptEn is string && data.promptEn.size() >= 1 && data.promptEn.size() <= 1000
+        && data.checkedCriteria is list && data.checkedCriteria.size() <= 15
+        && (data.checkedCriteria.size() == 0 || data.checkedCriteria[0] is string)
+        && data.completed is bool
+        && data.notes is string && data.notes.size() <= 2000
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidCompletedLesson(data, userId, lessonId) {
+      return data.keys().hasAll([
+          'uid', 'lessonId', 'titleVi', 'titleEn', 'cefr', 'skillVi',
+          'durationMinutes', 'scorePercent', 'routeTarget', 'completedAt'
+        ])
+        && data.keys().hasOnly([
+          'uid', 'lessonId', 'titleVi', 'titleEn', 'cefr', 'skillVi',
+          'durationMinutes', 'scorePercent', 'routeTarget', 'completedAt'
+        ])
+        && data.uid is string && data.uid == userId && data.uid == request.auth.uid
+        && data.lessonId is string && data.lessonId == lessonId && data.lessonId.size() <= 64
+        && data.titleVi is string && data.titleVi.size() >= 1 && data.titleVi.size() <= 200
+        && data.titleEn is string && data.titleEn.size() >= 1 && data.titleEn.size() <= 200
+        && isValidCefr(data.cefr)
+        && data.skillVi is string && data.skillVi.size() >= 1 && data.skillVi.size() <= 80
+        && data.durationMinutes is int && data.durationMinutes >= 1 && data.durationMinutes <= 300
+        && data.scorePercent is int && data.scorePercent >= 0 && data.scorePercent <= 100
+        && data.routeTarget is string && data.routeTarget.size() >= 1 && data.routeTarget.size() <= 40
+        && data.completedAt is timestamp;
+    }
+
+    function isValidSpeakingHistoryItem(data, userId) {
+      return data.keys().hasAll([
+          'uid', 'scenarioId', 'scenarioTitleVi', 'cefr', 'promptEn',
+          'learnerTranscript', 'naturalRewrite', 'grammarNotesVi',
+          'pronunciationFocusVi', 'source', 'createdAt'
+        ])
+        && data.keys().hasOnly([
+          'uid', 'scenarioId', 'scenarioTitleVi', 'cefr', 'promptEn',
+          'learnerTranscript', 'naturalRewrite', 'grammarNotesVi',
+          'pronunciationFocusVi', 'source', 'createdAt'
+        ])
+        && data.uid is string && data.uid == userId && data.uid == request.auth.uid
+        && data.scenarioId is string && data.scenarioId.size() >= 1 && data.scenarioId.size() <= 64
+        && data.scenarioTitleVi is string && data.scenarioTitleVi.size() >= 1 && data.scenarioTitleVi.size() <= 200
+        && isValidCefr(data.cefr)
+        && data.promptEn is string && data.promptEn.size() >= 1 && data.promptEn.size() <= 500
+        && data.learnerTranscript is string && data.learnerTranscript.size() >= 1 && data.learnerTranscript.size() <= 2000
+        && data.naturalRewrite is string && data.naturalRewrite.size() <= 2000
+        && data.grammarNotesVi is string && data.grammarNotesVi.size() <= 2000
+        && data.pronunciationFocusVi is string && data.pronunciationFocusVi.size() <= 2000
+        && data.source in ['gemini-server', 'self-practice']
+        && data.createdAt is timestamp;
+    }
+
+    function isValidTestResult(data, userId) {
+      return data.keys().hasAll([
+          'uid', 'exerciseId', 'titleVi', 'cefr', 'category',
+          'completedItems', 'totalItems', 'scorePercent', 'createdAt'
+        ])
+        && data.keys().hasOnly([
+          'uid', 'exerciseId', 'titleVi', 'cefr', 'category',
+          'completedItems', 'totalItems', 'scorePercent', 'createdAt'
+        ])
+        && data.uid is string && data.uid == userId && data.uid == request.auth.uid
+        && data.exerciseId is string && data.exerciseId.size() >= 1 && data.exerciseId.size() <= 64
+        && data.titleVi is string && data.titleVi.size() >= 1 && data.titleVi.size() <= 200
+        && isValidCefr(data.cefr)
+        && data.category is string && data.category.size() >= 1 && data.category.size() <= 60
+        && data.completedItems is int && data.completedItems >= 0 && data.completedItems <= 200
+        && data.totalItems is int && data.totalItems >= 1 && data.totalItems <= 200
+        && data.scorePercent is int && data.scorePercent >= 0 && data.scorePercent <= 100
+        && data.createdAt is timestamp;
+    }
+
+    // Shared Starter Dataset Collections (read by authenticated learners, managed by verified admin)
+    match /vocabulary/{vocabId} {
+      allow get: if isValidId(vocabId) && isSignedIn();
+      allow list: if isSignedIn() && resource.data.level in ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+      allow create: if isValidId(vocabId)
+        && isAdmin()
+        && isValidCatalogVocabulary(incoming(), vocabId);
+      allow update: if isValidId(vocabId)
+        && isAdmin()
+        && isValidCatalogVocabulary(incoming(), vocabId)
+        && incoming().id == existing().id
+        && incoming().diff(existing()).affectedKeys().hasOnly([
+          'level', 'topic', 'word', 'ipa', 'part_of_speech',
+          'meaning_vi', 'example_en', 'example_vi'
+        ]);
+      allow delete: if isValidId(vocabId) && isAdmin();
+    }
+
+    match /conversation_scenarios/{scenarioId} {
+      allow get: if isValidId(scenarioId) && isSignedIn();
+      allow list: if isSignedIn() && resource.data.level in ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+      allow create: if isValidId(scenarioId)
+        && isAdmin()
+        && isValidCatalogScenario(incoming(), scenarioId);
+      allow update: if isValidId(scenarioId)
+        && isAdmin()
+        && isValidCatalogScenario(incoming(), scenarioId)
+        && incoming().id == existing().id
+        && incoming().diff(existing()).affectedKeys().hasOnly([
+          'level', 'topic', 'context_vi', 'roles', 'dialogue',
+          'useful_phrases', 'ai_coaching_instruction_vi'
+        ]);
+      allow delete: if isValidId(scenarioId) && isAdmin();
+    }
+
+    match /speaking_tasks/{taskId} {
+      allow get: if isValidId(taskId) && isSignedIn();
+      allow list: if isSignedIn() && resource.data.level in ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+      allow create: if isValidId(taskId)
+        && isAdmin()
+        && isValidCatalogSpeakingTask(incoming(), taskId);
+      allow update: if isValidId(taskId)
+        && isAdmin()
+        && isValidCatalogSpeakingTask(incoming(), taskId)
+        && incoming().id == existing().id
+        && incoming().diff(existing()).affectedKeys().hasOnly([
+          'level', 'topic', 'prompt_en', 'prompt_vi',
+          'instructions_vi', 'guiding_questions', 'self_assessment'
+        ]);
+      allow delete: if isValidId(taskId) && isAdmin();
+    }
+
+    match /users/{userId} {
+      allow get: if isValidId(userId) && isOwner(userId);
+      allow list: if false;
+      allow create: if isValidId(userId)
+        && isOwner(userId)
+        && isValidUserProfile(incoming(), userId)
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time;
+      allow update: if isValidId(userId)
+        && isOwner(userId)
+        && isValidUserProfile(incoming(), userId)
+        && incoming().uid == existing().uid
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && (
+          incoming().diff(existing()).affectedKeys().hasOnly([
+            'fullName', 'email', 'avatarUrl', 'currentCefr', 'targetCefr',
+            'dailyGoalMinutes', 'preferredAccent', 'speechRate',
+            'showVietnameseHints', 'showIpaNotation', 'updatedAt'
+          ]) ||
+          incoming().diff(existing()).affectedKeys().hasOnly([
+            'todayMinutes', 'streakDays', 'vocabularyLearnedCount',
+            'skillScores', 'weeklyMinutes', 'updatedAt'
+          ])
+        );
+      allow delete: if isValidId(userId) && isOwner(userId);
+
+      match /vocabularyBookmarks/{wordId} {
+        allow get: if isValidId(userId) && isValidId(wordId) && isOwner(userId);
+        allow list: if isOwner(userId) && resource.data.uid == request.auth.uid;
+        allow create: if isValidId(userId)
+          && isValidId(wordId)
+          && isOwner(userId)
+          && isValidVocabularyBookmark(incoming(), userId, wordId)
+          && incoming().updatedAt == request.time
+          && parentUserExists(userId);
+        allow update: if isValidId(userId)
+          && isValidId(wordId)
+          && isOwner(userId)
+          && isValidVocabularyBookmark(incoming(), userId, wordId)
+          && incoming().uid == existing().uid
+          && incoming().wordId == existing().wordId
+          && incoming().updatedAt == request.time
+          && incoming().diff(existing()).affectedKeys().hasOnly([
+            'mastered', 'bookmarked', 'updatedAt'
+          ])
+          && parentUserExists(userId);
+        allow delete: if isValidId(userId) && isValidId(wordId) && isOwner(userId);
+      }
+
+      match /completedSpeakingTasks/{taskId} {
+        allow get: if isValidId(userId) && isValidId(taskId) && isOwner(userId);
+        allow list: if isOwner(userId) && resource.data.uid == request.auth.uid;
+        allow create: if isValidId(userId)
+          && isValidId(taskId)
+          && isOwner(userId)
+          && isValidCompletedSpeakingTask(incoming(), userId, taskId)
+          && incoming().updatedAt == request.time
+          && parentUserExists(userId);
+        allow update: if isValidId(userId)
+          && isValidId(taskId)
+          && isOwner(userId)
+          && isValidCompletedSpeakingTask(incoming(), userId, taskId)
+          && incoming().uid == existing().uid
+          && incoming().taskId == existing().taskId
+          && incoming().updatedAt == request.time
+          && incoming().diff(existing()).affectedKeys().hasOnly([
+            'checkedCriteria', 'completed', 'notes', 'updatedAt'
+          ])
+          && parentUserExists(userId);
+        allow delete: if isValidId(userId) && isValidId(taskId) && isOwner(userId);
+      }
+
+      match /completedLessons/{lessonId} {
+        allow get: if isValidId(userId) && isValidId(lessonId) && isOwner(userId);
+        allow list: if isOwner(userId) && resource.data.uid == request.auth.uid;
+        allow create: if isValidId(userId)
+          && isValidId(lessonId)
+          && isOwner(userId)
+          && isValidCompletedLesson(incoming(), userId, lessonId)
+          && incoming().completedAt == request.time
+          && parentUserExists(userId);
+        allow update: if isValidId(userId)
+          && isValidId(lessonId)
+          && isOwner(userId)
+          && isValidCompletedLesson(incoming(), userId, lessonId)
+          && incoming().uid == existing().uid
+          && incoming().lessonId == existing().lessonId
+          && incoming().completedAt == request.time
+          && incoming().diff(existing()).affectedKeys().hasOnly([
+            'durationMinutes', 'scorePercent', 'completedAt'
+          ])
+          && parentUserExists(userId);
+        allow delete: if isValidId(userId) && isValidId(lessonId) && isOwner(userId);
+      }
+
+      match /speakingHistory/{sessionId} {
+        allow get: if isValidId(userId) && isValidId(sessionId) && isOwner(userId);
+        allow list: if isOwner(userId) && resource.data.uid == request.auth.uid;
+        allow create: if isValidId(userId)
+          && isValidId(sessionId)
+          && isOwner(userId)
+          && isValidSpeakingHistoryItem(incoming(), userId)
+          && incoming().createdAt == request.time
+          && parentUserExists(userId);
+        allow update: if false;
+        allow delete: if isValidId(userId) && isValidId(sessionId) && isOwner(userId);
+      }
+
+      match /testResults/{resultId} {
+        allow get: if isValidId(userId) && isValidId(resultId) && isOwner(userId);
+        allow list: if isOwner(userId) && resource.data.uid == request.auth.uid;
+        allow create: if isValidId(userId)
+          && isValidId(resultId)
+          && isOwner(userId)
+          && isValidTestResult(incoming(), userId)
+          && incoming().createdAt == request.time
+          && parentUserExists(userId);
+        allow update: if false;
+        allow delete: if isValidId(userId) && isValidId(resultId) && isOwner(userId);
+      }
+    }
+  }
+}

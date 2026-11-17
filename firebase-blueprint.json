@@ -1,0 +1,590 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Private learner profile, preferences, daily study goal, and skill progress for an authenticated TỰ HỌC TIẾNG ANH - PHẠM HẬU user.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "fullName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "minLength": 3,
+          "maxLength": 160
+        },
+        "avatarUrl": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "currentCefr": {
+          "type": "string",
+          "enum": ["A1", "A2", "B1", "B2", "C1", "C2"]
+        },
+        "targetCefr": {
+          "type": "string",
+          "enum": ["A1", "A2", "B1", "B2", "C1", "C2"]
+        },
+        "dailyGoalMinutes": {
+          "type": "integer"
+        },
+        "todayMinutes": {
+          "type": "integer"
+        },
+        "streakDays": {
+          "type": "integer"
+        },
+        "vocabularyLearnedCount": {
+          "type": "integer"
+        },
+        "preferredAccent": {
+          "type": "string",
+          "enum": ["US", "UK"]
+        },
+        "speechRate": {
+          "type": "number"
+        },
+        "showVietnameseHints": {
+          "type": "boolean"
+        },
+        "showIpaNotation": {
+          "type": "boolean"
+        },
+        "skillScores": {
+          "type": "object"
+        },
+        "weeklyMinutes": {
+          "type": "object"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "uid",
+        "fullName",
+        "email",
+        "avatarUrl",
+        "currentCefr",
+        "targetCefr",
+        "dailyGoalMinutes",
+        "todayMinutes",
+        "streakDays",
+        "vocabularyLearnedCount",
+        "preferredAccent",
+        "speechRate",
+        "showVietnameseHints",
+        "showIpaNotation",
+        "skillScores",
+        "weeklyMinutes",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "CatalogVocabulary": {
+      "title": "CatalogVocabulary",
+      "description": "Shared starter dataset vocabulary item preserving every original JSON field and document ID.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "level": {
+          "type": "string",
+          "enum": ["A1", "A2", "B1", "B2", "C1", "C2"]
+        },
+        "topic": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "word": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "ipa": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "part_of_speech": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        "meaning_vi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "example_en": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "example_vi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        }
+      },
+      "required": [
+        "id",
+        "level",
+        "topic",
+        "word",
+        "ipa",
+        "part_of_speech",
+        "meaning_vi",
+        "example_en",
+        "example_vi"
+      ]
+    },
+    "CatalogConversationScenario": {
+      "title": "CatalogConversationScenario",
+      "description": "Shared starter dataset conversation scenario preserving every original JSON field and document ID.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "level": {
+          "type": "string",
+          "enum": ["A1", "A2", "B1", "B2", "C1", "C2"]
+        },
+        "topic": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "context_vi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "roles": {
+          "type": "array"
+        },
+        "dialogue": {
+          "type": "array"
+        },
+        "useful_phrases": {
+          "type": "array"
+        },
+        "ai_coaching_instruction_vi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "id",
+        "level",
+        "topic",
+        "context_vi",
+        "roles",
+        "dialogue",
+        "useful_phrases",
+        "ai_coaching_instruction_vi"
+      ]
+    },
+    "CatalogSpeakingTask": {
+      "title": "CatalogSpeakingTask",
+      "description": "Shared starter dataset speaking task preserving every original JSON field and document ID.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "level": {
+          "type": "string",
+          "enum": ["A1", "A2", "B1", "B2", "C1", "C2"]
+        },
+        "topic": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "prompt_en": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "prompt_vi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "instructions_vi": {
+          "type": "array"
+        },
+        "guiding_questions": {
+          "type": "array"
+        },
+        "self_assessment": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "level",
+        "topic",
+        "prompt_en",
+        "prompt_vi",
+        "instructions_vi",
+        "guiding_questions",
+        "self_assessment"
+      ]
+    },
+    "VocabularyBookmark": {
+      "title": "VocabularyBookmark",
+      "description": "User-specific vocabulary bookmark and mastery status under a learner profile.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "wordId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "word": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "cefr": {
+          "type": "string",
+          "enum": ["A1", "A2", "B1", "B2", "C1", "C2"]
+        },
+        "mastered": {
+          "type": "boolean"
+        },
+        "bookmarked": {
+          "type": "boolean"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["uid", "wordId", "word", "cefr", "mastered", "bookmarked", "updatedAt"]
+    },
+    "CompletedSpeakingTask": {
+      "title": "CompletedSpeakingTask",
+      "description": "User-specific completion and self-assessment record for a speaking_tasks item.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "taskId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "topic": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "level": {
+          "type": "string",
+          "enum": ["A1", "A2", "B1", "B2", "C1", "C2"]
+        },
+        "promptEn": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "checkedCriteria": {
+          "type": "array"
+        },
+        "completed": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "uid",
+        "taskId",
+        "topic",
+        "level",
+        "promptEn",
+        "checkedCriteria",
+        "completed",
+        "notes",
+        "updatedAt"
+      ]
+    },
+    "CompletedLesson": {
+      "title": "CompletedLesson",
+      "description": "Completed lesson entry recorded by an authenticated learner.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "lessonId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "titleVi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "titleEn": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "cefr": {
+          "type": "string",
+          "enum": ["A1", "A2", "B1", "B2", "C1", "C2"]
+        },
+        "skillVi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "durationMinutes": {
+          "type": "integer"
+        },
+        "scorePercent": {
+          "type": "integer"
+        },
+        "routeTarget": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "completedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "uid",
+        "lessonId",
+        "titleVi",
+        "titleEn",
+        "cefr",
+        "skillVi",
+        "durationMinutes",
+        "scorePercent",
+        "routeTarget",
+        "completedAt"
+      ]
+    },
+    "SpeakingHistoryItem": {
+      "title": "SpeakingHistoryItem",
+      "description": "Private AI speaking practice session and feedback transcript owned by a learner.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "scenarioId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "scenarioTitleVi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "cefr": {
+          "type": "string",
+          "enum": ["A1", "A2", "B1", "B2", "C1", "C2"]
+        },
+        "promptEn": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "learnerTranscript": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "naturalRewrite": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "grammarNotesVi": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "pronunciationFocusVi": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "source": {
+          "type": "string",
+          "enum": ["gemini-server", "self-practice"]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "uid",
+        "scenarioId",
+        "scenarioTitleVi",
+        "cefr",
+        "promptEn",
+        "learnerTranscript",
+        "naturalRewrite",
+        "grammarNotesVi",
+        "pronunciationFocusVi",
+        "source",
+        "createdAt"
+      ]
+    },
+    "TestResult": {
+      "title": "TestResult",
+      "description": "Pronunciation and speaking exercise assessment result owned by a learner.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "exerciseId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "titleVi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "cefr": {
+          "type": "string",
+          "enum": ["A1", "A2", "B1", "B2", "C1", "C2"]
+        },
+        "category": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        "completedItems": {
+          "type": "integer"
+        },
+        "totalItems": {
+          "type": "integer"
+        },
+        "scorePercent": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "uid",
+        "exerciseId",
+        "titleVi",
+        "cefr",
+        "category",
+        "completedItems",
+        "totalItems",
+        "scorePercent",
+        "createdAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/vocabulary/{vocabId}": {
+      "schema": { "$ref": "#/entities/CatalogVocabulary" },
+      "description": "Starter dataset vocabulary items readable by authenticated learners and managed by admin."
+    },
+    "/conversation_scenarios/{scenarioId}": {
+      "schema": { "$ref": "#/entities/CatalogConversationScenario" },
+      "description": "Starter dataset conversation scenarios readable by authenticated learners and managed by admin."
+    },
+    "/speaking_tasks/{taskId}": {
+      "schema": { "$ref": "#/entities/CatalogSpeakingTask" },
+      "description": "Starter dataset speaking tasks readable by authenticated learners and managed by admin."
+    },
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Private learner profile, CEFR levels, study goals, and skill metrics isolated by userId."
+    },
+    "/users/{userId}/vocabularyBookmarks/{wordId}": {
+      "schema": { "$ref": "#/entities/VocabularyBookmark" },
+      "description": "Per-user vocabulary bookmark and mastery status."
+    },
+    "/users/{userId}/completedSpeakingTasks/{taskId}": {
+      "schema": { "$ref": "#/entities/CompletedSpeakingTask" },
+      "description": "Per-user completed speaking task status and self-assessment checklist."
+    },
+    "/users/{userId}/completedLessons/{lessonId}": {
+      "schema": { "$ref": "#/entities/CompletedLesson" },
+      "description": "Per-user completed lesson records."
+    },
+    "/users/{userId}/speakingHistory/{sessionId}": {
+      "schema": { "$ref": "#/entities/SpeakingHistoryItem" },
+      "description": "Per-user AI speaking practice history and feedback."
+    },
+    "/users/{userId}/testResults/{resultId}": {
+      "schema": { "$ref": "#/entities/TestResult" },
+      "description": "Per-user pronunciation drill and assessment results."
+    }
+  }
+}
